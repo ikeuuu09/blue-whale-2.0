@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Blue Whale 2.0 | Challenge Platform</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="whale">🐋</span>
+            <div>
+                <h2>BLUE WHALE</h2>
+                <span>2.0</span>
+            </div>
+        </div>
+
+        <nav>
+    <a href="#home">Home</a>
+    <a href="#challenges">Challenges</a>
+    <a href="#multiplayer">Multiplayer</a>
+    <a href="#leaderboard">Leaderboard</a>
+    <a href="login.html">Login</a>
+</nav>
+
+        <button class="profile-btn" onclick="openProfile()">
+            👤 Profile
+        </button>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                ⚡ THE ULTIMATE CHALLENGE PLATFORM
+            </div>
+
+            <h1>
+                CHALLENGE
+                <span>YOUR LIMITS.</span>
+            </h1>
+
+            <p>
+                Complete challenges. Prove your skills.
+                Challenge your friends. Earn XP.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn"
+                        onclick="openSolo()">
+                    🎯 PLAY SOLO
+                </button>
+
+                <button class="secondary-btn"
+                        onclick="openMultiplayer()">
+                    ⚔️ MULTIPLAYER
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="hero-whale">
+            🐋
+        </div>
+
+    </section>
+
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+            <strong>1,250+</strong>
+            <span>Challenges</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>8,420+</strong>
+            <span>Players</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>24K+</strong>
+            <span>Challenges Completed</span>
+        </div>
+
+        <div class="stat-card">
+            <strong>98%</strong>
+            <span>Fun Rating</span>
+        </div>
+
+    </section>
+
+
+    <!-- ================= CHALLENGES ================= -->
+
+    <section id="challenges" class="section">
+
+        <div class="section-heading">
+
+            <div>
+                <span class="section-tag">DISCOVER</span>
+
+                <h2>
+                    Featured Challenges
+                </h2>
+            </div>
+
+            <button class="view-btn"
+                    onclick="showAllChallenges()">
+                View All →
+            </button>
+
+        </div>
+
+
+        <div class="challenge-grid">
+
+            <!-- Challenge 1 -->
+
+            <div class="challenge-card">
+
+                <div class="challenge-icon brain">
+                    🧠
+                </div>
+
+                <div class="difficulty easy">
+                    EASY
+                </div>
+
+                <h3>
+                    Memory Master
+                </h3>
+
+                <p>
+                    Test your memory and complete
+                    the sequence correctly.
+                </p>
+
+                <div class="challenge-info">
+
+                    <span>⏱ 60 sec</span>
+
+                    <span>⭐ +100 XP</span>
+
+                </div>
+
+                <button onclick="startChallenge('Memory Master')">
+                    START CHALLENGE
+                </button>
+
+            </div>
+
+
+            <!-- Challenge 2 -->
+
+            <div class="challenge-card">
+
+                <div class="challenge-icon creativity">
+                    🎨
+                </div>
+
+                <div class="difficulty medium">
+                    MEDIUM
+                </div>
+
+                <h3>
+                    Creative Rush
+                </h3>
+
+                <p>
+                    Complete a creative task before
+                    the timer runs out.
+                </p>
+
+                <div class="challenge-info">
+
+                    <span>⏱ 5 min</span>
+
+                    <span>⭐ +200 XP</span>
+
+                </div>
+
+                <button onclick="startChallenge('Creative Rush')">
+                    START CHALLENGE
+                </button>
+
+            </div>
+
+
+            <!-- Challenge 3 -->
+
+            <div class="challenge-card">
+
+                <div class="challenge-icon puzzle">
+                    🧩
+                </div>
+
+                <div class="difficulty hard">
+                    HARD
+                </div>
+
+                <h3>
+                    Puzzle Breaker
+                </h3>
+
+                <p>
+                    Solve the puzzle faster than
+                    your opponent.
+                </p>
+
+                <div class="challenge-info">
+
+                    <span>⏱ 3 min</span>
+
+                    <span>⭐ +300 XP</span>
+
+                </div>
+
+                <button onclick="startChallenge('Puzzle Breaker')">
+                    START CHALLENGE
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MULTIPLAYER ================= -->
+
+    <section id="multiplayer" class="multiplayer">
+
+        <div class="multi-content">
+
+            <span class="section-tag">
+                ⚔️ MULTIPLAYER
+            </span>
+
+            <h2>
+                Challenge
+                <span>Someone.</span>
+            </h2>
+
+            <p>
+                Create a challenge, invite another
+                player and battle it out round by round.
+            </p>
+
+            <button class="primary-btn"
+                    onclick="openMultiplayer()">
+                FIND OPPONENT →
+            </button>
+
+        </div>
+
+
+        <div class="battle">
+
+            <div class="player">
+
+                <div class="avatar">
+                    👤
+                </div>
+
+                <strong>PLAYER A</strong>
+
+                <span>520 XP</span>
+
+            </div>
+
+            <div class="vs">
+                VS
+            </div>
+
+            <div class="player">
+
+                <div class="avatar">
+                    👤
+                </div>
+
+                <strong>PLAYER B</strong>
+
+                <span>490 XP</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LEADERBOARD ================= -->
+
+    <section id="leaderboard" class="section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <span class="section-tag">
+                    🏆 RANKINGS
+                </span>
+
+                <h2>
+                    Global Leaderboard
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="leaderboard">
+
+            <div class="leader top">
+                <span>🥇</span>
+                <strong>Shadow</strong>
+                <span>12,450 XP</span>
+            </div>
+
+            <div class="leader">
+                <span>🥈</span>
+                <strong>PlayerOne</strong>
+                <span>11,820 XP</span>
+            </div>
+
+            <div class="leader">
+                <span>🥉</span>
+                <strong>Alex</strong>
+                <span>9,720 XP</span>
+            </div>
+
+            <div class="leader">
+                <span>#4</span>
+                <strong>ChallengeKing</strong>
+                <span>8,950 XP</span>
+            </div>
+
+            <div class="leader you">
+                <span>#5</span>
+                <strong>You</strong>
+                <span>8,420 XP</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🐋 BLUE WHALE 2.0
+        </div>
+
+        <p>
+            Challenge • Complete • Prove • Conquer
+        </p>
+
+        <span>
+            © 2026 Blue Whale 2.0
+        </span>
+
+    </footer>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div id="modal" class="modal">
+
+        <div class="modal-box">
+
+            <button class="close"
+                    onclick="closeModal()">
+                ×
+            </button>
+
+            <div id="modal-content"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

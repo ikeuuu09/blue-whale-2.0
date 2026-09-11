@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Solo Challenges | BLUE WHALE 2.0</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="dashboard-page">
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span class="whale">🐋</span>
+
+            <div>
+                <h2>BLUE WHALE</h2>
+                <span>2.0</span>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="solo.html">
+                Solo
+            </a>
+
+            <a href="multiplayer.html">
+                Multiplayer
+            </a>
+
+            <a href="leaderboard.html">
+                Leaderboard
+            </a>
+
+        </nav>
+
+        <button
+    class="profile-btn"
+    onclick="logoutFirebase()"
+>
+    🚪 Logout
+</button>
+
+    </header>
+
+
+    <main class="dashboard">
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <span class="section-tag">
+                    SOLO MODE
+                </span>
+
+                <h1>
+                    Choose Your
+                    <span>Challenge.</span>
+                </h1>
+
+                <p>
+                    Complete challenges and earn XP.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="solo-grid">
+
+
+            <!-- MEMORY -->
+
+            <article class="solo-card">
+
+                <div class="solo-card-icon">
+                    🧠
+                </div>
+
+                <span class="difficulty easy">
+                    EASY
+                </span>
+
+                <h2>
+                    Memory Master
+                </h2>
+
+                <p>
+                    Study a sequence of symbols,
+                    then reproduce it correctly.
+                </p>
+
+                <div class="solo-meta">
+
+                    <span>
+                        ⏱ 60 sec
+                    </span>
+
+                    <span>
+                        ⭐ 100 XP
+                    </span>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="startSoloChallenge('Memory Master', 100)"
+                >
+                    START
+                </button>
+
+            </article>
+
+
+            <!-- PUZZLE -->
+
+            <article class="solo-card">
+
+                <div class="solo-card-icon">
+                    🧩
+                </div>
+
+                <span class="difficulty medium">
+                    MEDIUM
+                </span>
+
+                <h2>
+                    Puzzle Breaker
+                </h2>
+
+                <p>
+                    Solve a logic puzzle before the
+                    timer reaches zero.
+                </p>
+
+                <div class="solo-meta">
+
+                    <span>
+                        ⏱ 3 min
+                    </span>
+
+                    <span>
+                        ⭐ 200 XP
+                    </span>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="startSoloChallenge('Puzzle Breaker', 200)"
+                >
+                    START
+                </button>
+
+            </article>
+
+
+            <!-- CREATIVE -->
+
+            <article class="solo-card">
+
+                <div class="solo-card-icon">
+                    🎨
+                </div>
+
+                <span class="difficulty medium">
+                    MEDIUM
+                </span>
+
+                <h2>
+                    Creative Rush
+                </h2>
+
+                <p>
+                    Create something original using
+                    a simple prompt.
+                </p>
+
+                <div class="solo-meta">
+
+                    <span>
+                        ⏱ 5 min
+                    </span>
+
+                    <span>
+                        ⭐ 200 XP
+                    </span>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="startSoloChallenge('Creative Rush', 200)"
+                >
+                    START
+                </button>
+
+            </article>
+
+
+            <!-- TRIVIA -->
+
+            <article class="solo-card">
+
+                <div class="solo-card-icon">
+                    ❓
+                </div>
+
+                <span class="difficulty hard">
+                    HARD
+                </span>
+
+                <h2>
+                    Trivia Titan
+                </h2>
+
+                <p>
+                    Answer a series of questions and
+                    try to get a perfect score.
+                </p>
+
+                <div class="solo-meta">
+
+                    <span>
+                        ⏱ 5 min
+                    </span>
+
+                    <span>
+                        ⭐ 300 XP
+                    </span>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="startSoloChallenge('Trivia Titan', 300)"
+                >
+                    START
+                </button>
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

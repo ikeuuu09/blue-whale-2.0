@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Multiplayer | BLUE WHALE 2.0</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="dashboard-page">
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span class="whale">🐋</span>
+
+            <div>
+                <h2>BLUE WHALE</h2>
+                <span>2.0</span>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="solo.html">
+                Solo
+            </a>
+
+            <a href="multiplayer.html">
+                Multiplayer
+            </a>
+
+            <a href="leaderboard.html">
+                Leaderboard
+            </a>
+
+        </nav>
+
+       <button
+    class="profile-btn"
+    onclick="logoutFirebase()"
+>
+    🚪 Logout
+</button>
+
+    </header>
+
+
+    <!-- MAIN -->
+
+    <main class="dashboard multiplayer-page">
+
+        <!-- HEADER -->
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <span class="section-tag">
+                    ⚔️ MULTIPLAYER ARENA
+                </span>
+
+                <h1>
+                    Challenge
+                    <span>Your Rival.</span>
+                </h1>
+
+                <p>
+                    Create a room or join your friend's room.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATE / JOIN -->
+
+        <section
+            id="multiplayerLobby"
+            class="multi-lobby"
+        >
+
+            <div class="multi-option">
+
+                <div class="multi-option-icon">
+                    ➕
+                </div>
+
+                <h2>
+                    Create Room
+                </h2>
+
+                <p>
+                    Create a private room and invite
+                    another player.
+                </p>
+
+                <button
+                    class="primary-btn"
+                    onclick="createMultiplayerRoom()"
+                >
+                    CREATE ROOM
+                </button>
+
+            </div>
+
+
+            <div class="multi-divider">
+                OR
+            </div>
+
+
+            <div class="multi-option">
+
+                <div class="multi-option-icon">
+                    🔗
+                </div>
+
+                <h2>
+                    Join Room
+                </h2>
+
+                <p>
+                    Enter your friend's room code
+                    to join their match.
+                </p>
+
+                <input
+                    id="joinRoomInput"
+                    class="room-input"
+                    type="text"
+                    maxlength="6"
+                    placeholder="ROOM CODE"
+                >
+
+                <button
+                    class="secondary-btn"
+                    onclick="joinMultiplayerRoom()"
+                >
+                    JOIN ROOM
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACTIVE ROOM -->
+
+        <section
+            id="activeRoom"
+            class="active-room"
+            style="display:none;"
+        >
+
+            <div class="room-header">
+
+                <div>
+
+                    <span class="section-tag">
+                        PRIVATE MATCH
+                    </span>
+
+                    <h2>
+                        Room
+                        <span id="currentRoomCode">
+                            ------
+                        </span>
+                    </h2>
+
+                </div>
+
+                <div class="room-status">
+                    🟢 WAITING
+                </div>
+
+            </div>
+
+
+            <!-- PLAYERS -->
+
+            <div class="battle-arena">
+
+                <div class="arena-player">
+
+                    <div class="big-avatar">
+                        👤
+                    </div>
+
+                    <h3 id="playerOneName">
+                        Player 1
+                    </h3>
+
+                    <span>
+                        ⭐ <b id="playerOneScore">0</b> XP
+                    </span>
+
+                </div>
+
+
+                <div class="arena-vs">
+                    <span>VS</span>
+                </div>
+
+
+                <div class="arena-player">
+
+                    <div class="big-avatar">
+                        👤
+                    </div>
+
+                    <h3 id="playerTwoName">
+                        Waiting...
+                    </h3>
+
+                    <span>
+                        ⭐ <b id="playerTwoScore">0</b> XP
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- MATCH AREA -->
+
+            <div
+                id="matchArea"
+                class="match-area"
+            >
+
+                <div class="waiting-box">
+
+                    <div class="waiting-animation">
+                        ⏳
+                    </div>
+
+                    <h2>
+                        Waiting for opponent
+                    </h2>
+
+                    <p>
+                        Share this room code with your
+                        opponent:
+                    </p>
+
+                    <div
+                        class="large-room-code"
+                        id="shareRoomCode"
+                    >
+                        ------
+                    </div>
+
+                    <button
+                        class="secondary-btn"
+                        onclick="copyRoomCode()"
+                    >
+                        📋 COPY CODE
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CREATE CHALLENGE -->
+
+            <div
+                id="challengeCreator"
+                class="challenge-creator"
+                style="display:none;"
+            >
+
+                <span class="section-tag">
+                    YOUR TURN
+                </span>
+
+                <h2>
+                    Create a Challenge
+                </h2>
+
+                <p>
+                    Give your opponent a safe,
+                    skill-based challenge.
+                </p>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Challenge Title
+                    </label>
+
+                    <input
+                        id="customChallengeTitle"
+                        type="text"
+                        maxlength="60"
+                        placeholder="Example: Solve this puzzle"
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>
+                        Challenge Description
+                    </label>
+
+                    <textarea
+                        id="customChallengeDescription"
+                        maxlength="500"
+                        placeholder="Explain what the opponent needs to complete..."
+                    ></textarea>
+
+                </div>
+
+
+                <div class="challenge-reward">
+
+                    <span>
+                        ⭐ Reward
+                    </span>
+
+                    <strong>
+                        100 XP
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="primary-btn"
+                    onclick="sendChallenge()"
+                >
+                    SEND CHALLENGE →
+                </button>
+
+            </div>
+
+
+            <!-- OPPONENT CHALLENGE -->
+
+            <div
+                id="opponentChallenge"
+                class="opponent-challenge"
+                style="display:none;"
+            >
+
+                <span class="section-tag">
+                    ⚔️ CHALLENGE RECEIVED
+                </span>
+
+                <h2 id="receivedChallengeTitle">
+                    Challenge
+                </h2>
+
+                <p id="receivedChallengeDescription">
+                    Challenge description
+                </p>
+
+                <div class="challenge-reward">
+
+                    <span>
+                        ⭐ Reward
+                    </span>
+
+                    <strong>
+                        100 XP
+                    </strong>
+
+                </div>
+
+                <button
+                    class="primary-btn"
+                    onclick="completeOpponentChallenge()"
+                >
+                    COMPLETE CHALLENGE
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL -->
+
+    <div
+        id="modal"
+        class="modal"
+    >
+
+        <div class="modal-box">
+
+            <button
+                class="close"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+            <div id="modal-content"></div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
+<section class="real-multiplayer">
+
+    <!-- LOBBY -->
+
+    <div id="realLobby">
+
+        <span class="section-tag">
+            ⚔️ REAL-TIME MULTIPLAYER
+        </span>
+
+        <h1>
+            Enter the Arena
+        </h1>
+
+        <p>
+            Challenge another player with safe,
+            skill-based challenges.
+        </p>
+
+
+        <div class="multi-lobby">
+
+            <div class="multi-option">
+
+                <div class="multi-option-icon">
+                    🏠
+                </div>
+
+                <h2>
+                    Create Room
+                </h2>
+
+                <p>
+                    Create a private multiplayer room.
+                </p>
+
+                <button
+                    class="primary-btn"
+                    onclick="createRealRoom()"
+                >
+                    CREATE ROOM
+                </button>
+
+            </div>
+
+
+            <div class="multi-divider">
+                OR
+            </div>
+
+
+            <div class="multi-option">
+
+                <div class="multi-option-icon">
+                    🔗
+                </div>
+
+                <h2>
+                    Join Room
+                </h2>
+
+                <input
+                    id="realRoomCode"
+                    class="room-input"
+                    maxlength="6"
+                    placeholder="ROOM CODE"
+                >
+
+                <button
+                    class="secondary-btn"
+                    onclick="joinRealRoom()"
+                >
+                    JOIN ROOM
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- REAL ROOM -->
+
+    <div
+        id="realRoom"
+        style="display:none;"
+    >
+
+        <div class="room-header">
+
+            <div>
+
+                <span class="section-tag">
+                    LIVE MATCH
+                </span>
+
+                <h2>
+                    ROOM
+                    <span id="realRoomDisplay">
+                        ------
+                    </span>
+                </h2>
+
+            </div>
+
+
+            <div
+                id="realRoomStatus"
+                class="room-status"
+            >
+                🟡 WAITING FOR PLAYER
+            </div>
+
+        </div>
+
+
+        <button
+            class="secondary-btn"
+            onclick="copyRealRoomCode()"
+        >
+            📋 COPY ROOM CODE
+        </button>
+
+
+        <!-- PLAYERS -->
+
+        <div class="battle-arena">
+
+            <div class="arena-player">
+
+                <div class="big-avatar">
+                    👤
+                </div>
+
+                <h3 id="realPlayerOne">
+                    Player 1
+                </h3>
+
+                <span>
+                    ⭐
+                    <b id="realScoreOne">0</b>
+                    XP
+                </span>
+
+            </div>
+
+
+            <div class="arena-vs">
+
+                <span>
+                    VS
+                </span>
+
+            </div>
+
+
+            <div class="arena-player">
+
+                <div class="big-avatar">
+                    👤
+                </div>
+
+                <h3 id="realPlayerTwo">
+                    Waiting...
+                </h3>
+
+                <span>
+                    ⭐
+                    <b id="realScoreTwo">0</b>
+                    XP
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHALLENGE CREATOR -->
+
+        <div class="challenge-creator">
+
+            <span class="section-tag">
+                🎯 SEND A CHALLENGE
+            </span>
+
+            <h2>
+                Challenge Your Opponent
+            </h2>
+
+            <input
+                id="realChallengeTitle"
+                type="text"
+                maxlength="60"
+                placeholder="Challenge title"
+            >
+
+
+            <textarea
+                id="realChallengeDescription"
+                maxlength="500"
+                placeholder="Describe a safe skill-based challenge..."
+            ></textarea>
+
+
+            <div class="challenge-reward">
+
+                <span>
+                    Reward
+                </span>
+
+                <strong>
+                    ⭐ 100 XP
+                </strong>
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="createRealChallenge()"
+            >
+                SEND CHALLENGE →
+            </button>
+
+        </div>
+
+
+        <!-- LIVE CHALLENGE -->
+
+        <div
+            id="liveChallenge"
+            class="match-area"
+        >
+
+            <div class="waiting-box">
+
+                <div class="waiting-animation">
+                    ⚔️
+                </div>
+
+                <h2>
+                    Ready for battle
+                </h2>
+
+                <p>
+                    Waiting for a challenge...
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script
+    type="module"
+    src="multiplayer.js"
+></script>

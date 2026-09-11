@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Dashboard | BLUE WHALE 2.0</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="dashboard-page">
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <div class="logo">
+
+            <span class="whale">🐋</span>
+
+            <div>
+                <h2>BLUE WHALE</h2>
+                <span>2.0</span>
+            </div>
+
+        </div>
+
+        <nav>
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="solo.html">
+                Solo
+            </a>
+
+            <a href="multiplayer.html">
+                Multiplayer
+            </a>
+
+            <a href="leaderboard.html">
+                Leaderboard
+            </a>
+
+        </nav>
+
+        <button
+            class="profile-btn"
+            onclick="logout()"
+        >
+            🚪 Logout
+        </button>
+
+    </header>
+
+
+    <!-- DASHBOARD -->
+
+    <main class="dashboard">
+
+        <!-- WELCOME -->
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <span class="section-tag">
+                    PLAYER DASHBOARD
+                </span>
+
+                <h1>
+                    Welcome,
+                    <span id="dashboardUsername">
+                        Challenger
+                    </span>
+                    👋
+                </h1>
+
+                <p>
+                    Ready for your next challenge?
+                </p>
+
+            </div>
+
+            <div class="level-badge">
+
+                <span>LEVEL</span>
+
+                <strong id="dashboardLevel">
+                    1
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATS -->
+
+        <section class="dashboard-stats">
+
+            <div class="dashboard-stat">
+
+                <span class="stat-icon">
+                    ⭐
+                </span>
+
+                <div>
+
+                    <strong id="dashboardXP">
+                        0
+                    </strong>
+
+                    <span>
+                        Total XP
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+                <span class="stat-icon">
+                    🎯
+                </span>
+
+                <div>
+
+                    <strong id="dashboardCompleted">
+                        0
+                    </strong>
+
+                    <span>
+                        Completed
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+                <span class="stat-icon">
+                    🏆
+                </span>
+
+                <div>
+
+                    <strong id="dashboardWins">
+                        0
+                    </strong>
+
+                    <span>
+                        Wins
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-stat">
+
+                <span class="stat-icon">
+                    ⚔️
+                </span>
+
+                <div>
+
+                    <strong id="dashboardLosses">
+                        0
+                    </strong>
+
+                    <span>
+                        Losses
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- XP BAR -->
+
+        <section class="xp-section">
+
+            <div class="xp-header">
+
+                <span>
+                    Level <strong id="xpCurrentLevel">1</strong>
+                </span>
+
+                <span>
+                    <strong id="xpProgressText">
+                        0 / 100
+                    </strong> XP
+                </span>
+
+            </div>
+
+            <div class="xp-bar">
+
+                <div
+                    id="xpProgress"
+                    class="xp-progress"
+                ></div>
+
+            </div>
+
+            <p>
+                Earn XP by completing challenges.
+            </p>
+
+        </section>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="quick-actions">
+
+            <h2>
+                Quick Play
+            </h2>
+
+            <div class="quick-grid">
+
+                <a
+                    href="solo.html"
+                    class="quick-card"
+                >
+
+                    <span>🎯</span>
+
+                    <div>
+                        <h3>Solo Challenge</h3>
+
+                        <p>
+                            Play a challenge created
+                            by Blue Whale 2.0.
+                        </p>
+                    </div>
+
+                    <strong>→</strong>
+
+                </a>
+
+
+                <a
+                    href="multiplayer.html"
+                    class="quick-card"
+                >
+
+                    <span>⚔️</span>
+
+                    <div>
+                        <h3>Multiplayer</h3>
+
+                        <p>
+                            Challenge another player.
+                        </p>
+                    </div>
+
+                    <strong>→</strong>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- DAILY CHALLENGE -->
+
+        <section class="daily-card">
+
+            <div>
+
+                <span class="section-tag">
+                    🔥 TODAY'S CHALLENGE
+                </span>
+
+                <h2>
+                    Creative Snapshot
+                </h2>
+
+                <p>
+                    Take a creative photograph of an
+                    everyday object and give it an
+                    interesting title.
+                </p>
+
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="startSoloChallenge('Creative Snapshot', 150)"
+            >
+                START →
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Firebase Test</title>
+</head>
+
+<body>
+
+    <h1>🐋 BLUE WHALE 2.0</h1>
+
+    <p id="status">
+        Connecting to Firebase...
+    </p>
+
+
+    <script type="module">
+
+        import {
+            auth,
+            db
+        } from "./firebase-config.js";
+
+
+        document.getElementById("status")
+            .textContent =
+            "🔥 Firebase connected successfully!";
+
+
+    </script>
+
+</body>
+
+</html>
